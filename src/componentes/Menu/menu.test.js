@@ -6,3 +6,16 @@ test('Deve renderizar um link para página inicial', () => {
     const linkPaginaInicial = screen.getByText('Inicial')
     expect(linkPaginaInicial).toBeInTheDocument();
 })
+
+test("Deve renderizar um lista de links", () => {
+    render(<Menu />); 
+    const listaDeLinks = screen.getAllByRole('link'); 
+    expect(listaDeLinks).toHaveLength(4);
+})
+
+test('Não deve renderizar o link para Extrato', () => {
+    render(<Menu />)
+    const linkExtrato = screen.queryByText('Extrato'); 
+    expect(linkExtrato).not.toBeInTheDocument();
+})
+
